@@ -16,7 +16,6 @@
 
 <script setup>
 import ProjectCard from '@/components/ProjectCard.vue'
-import Ejemplo from '../assets/avatar.jpg'
 import GPAPI from '../assets/gp_api.png'
 import PLATAFORM from '../assets/plataforma.png'
 import NSIMULATOR from '../assets/network_simulator.png'
