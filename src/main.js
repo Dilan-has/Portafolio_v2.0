@@ -5,10 +5,10 @@ import './assets/main.css';
 
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome, faProjectDiagram, faBriefcase, faCode, faEnvelope, faArrowRight, faExternalLinkAlt, faServer } from '@fortawesome/free-solid-svg-icons'; // Asegúrate de añadir faArrowRight, etc.
-import { faGithub, faGolang, faPython } from '@fortawesome/free-brands-svg-icons';
+import { faHome, faProjectDiagram, faBriefcase, faCode, faEnvelope, faArrowRight, faExternalLinkAlt, faServer, faSitemap, faLayerGroup, faDatabase, faTerminal, faFolderTree, faCodeCommit, faAt, faUserTie, faCubes, faNetworkWired } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faGolang, faPython, faLinkedin, faJava, faNodeJs } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faHome, faProjectDiagram, faBriefcase, faCode, faEnvelope, faArrowRight, faExternalLinkAlt, faGithub, faGolang, faPython, faServer);
+library.add(faHome, faProjectDiagram, faBriefcase, faCode, faEnvelope, faArrowRight, faExternalLinkAlt, faGithub, faGolang, faPython, faServer, faLinkedin, faSitemap, faLayerGroup, faDatabase, faTerminal, faFolderTree, faCodeCommit, faAt, faUserTie, faCubes, faNetworkWired, faJava, faNodeJs);
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 

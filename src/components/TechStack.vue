@@ -1,18 +1,44 @@
 <template>
-  <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold text-white mb-8 text-center animate-fade-in-up">Stack Tecnológico</h2>
+  <div>
+    <div class="mb-16">
+      <div class="mb-4 inline-block border border-[#d1c4bc] px-3 py-1 text-[#5f5e5e] font-['Space_Grotesk',monospace] text-xs uppercase tracking-widest bg-[#f4f4f3]">
+        Infrastructure
+      </div>
+      <h2 class="text-4xl md:text-6xl font-bold text-[#1a1c1c] font-['Manrope',sans-serif] tracking-tighter">
+        Technology Stack
+      </h2>
+    </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-items-center">
+    <!-- Tech Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
       <div
           v-for="(tech, index) in stack"
           :key="index"
-          class="flex flex-col items-center bg-gray-800 rounded-xl p-4 hover:bg-teal-600 transition
-                 opacity-0 translate-y-8 animate-fade-in-up-stagger" :style="{ 'animation-delay': `${index * 0.1}s` }" >
-        <img :src="tech.icon" :alt="tech.name" class="w-24 h-24 mb-2" />
-        <p class="text-sm text-white">{{ tech.name }}</p>
+          class="flex flex-col items-center bg-[#f4f4f3] border border-[#d1c4bc] p-8 hover:bg-[#e4e2e1] hover:border-[#80756e] transition-all duration-300 group hover:-translate-y-1 hover:shadow-[4px_4px_0px_rgba(26,28,28,0.1)]" >
+        <img :src="tech.icon" :alt="tech.name" class="w-16 h-16 mb-6 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+        <p class="text-sm font-['Space_Grotesk',monospace] uppercase tracking-widest text-[#5f5e5e] group-hover:text-[#1a1c1c]">{{ tech.name }}</p>
       </div>
     </div>
-  </section>
+
+    <!-- Soft Skills Section -->
+    <div class="mt-32">
+      <div class="mb-10 flex items-center gap-4">
+        <h3 class="text-2xl font-bold text-[#1a1c1c] font-['Manrope',sans-serif]">
+          Human Competencies
+        </h3>
+        <div class="h-px bg-[#d1c4bc] flex-1"></div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <span
+            v-for="(skill, index) in softSkills"
+            :key="index"
+            class="px-4 py-2 bg-[#f9f9f8] border border-[#d1c4bc] text-[#4e453f] text-sm font-['Space_Grotesk',monospace] uppercase tracking-wider hover:border-[#1a1c1c] hover:bg-[#1a1c1c] hover:text-[#f9f9f8] transition-all duration-300 cursor-default"
+        >
+          {{ skill }}
+        </span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -32,6 +58,17 @@ const stack = [
   { name: 'Docker', icon: Docker },
   { name: 'Python', icon: Python },
   { name: 'Git', icon: Git },
+]
+
+const softSkills = [
+  'Problem Solving',
+  'Effective Communication',
+  'Team Collaboration',
+  'Adaptability',
+  'Critical Thinking',
+  'Mentorship',
+  'Time Management',
+  'Agile Methodologies'
 ]
 </script>
 

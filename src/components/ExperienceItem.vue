@@ -1,20 +1,34 @@
 <template>
-  <div class="relative mb-8 pl-10 opacity-0 translate-y-8 animate-fade-in-up-stagger">
-    <div class="absolute left-0 top-0 h-full w-0.5 bg-gray-700"></div>
+  <div class="relative mb-16 pl-8 md:pl-12 group">
+    <!-- Node -->
+    <div class="absolute -left-[6px] top-2 w-3 h-3 bg-[#f9f9f8] border-2 border-[#4b3d33] transition-colors group-hover:bg-[#4b3d33]"></div>
 
-    <div class="absolute -left-1.5 top-0 w-4 h-4 bg-teal-500 rounded-full border-2 border-gray-900 z-10"></div>
-
-    <div class="border-l-4 border-teal-500 pl-4">
-      <h3 class="text-xl font-semibold text-white">{{ job.title }}</h3>
-      <p class="text-gray-400 text-sm">{{ job.company }} — {{ job.period }}</p>
-      <ul class="list-disc ml-5 mt-2 text-gray-300 text-sm space-y-1">
-        <li v-for="(task, i) in job.tasks" :key="i">{{ task }}</li>
-      </ul>
-      <div class="flex flex-wrap mt-3 gap-2">
+    <div class="flex flex-col">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <h3 class="text-2xl font-semibold text-[#1a1c1c] font-['Manrope',sans-serif]">{{ job.title }}</h3>
+        <span class="text-[#80756e] font-['Space_Grotesk',monospace] text-xs uppercase tracking-wider">
+          @ {{ job.company }}
+        </span>
+      </div>
+      
+      <p class="text-[#5f5e5e] font-['Space_Grotesk',monospace] text-xs uppercase tracking-widest mb-6">
+        {{ job.period }}
+      </p>
+      
+      <div class="text-[#4e453f] text-base leading-[1.8] mb-6">
+        <ul class="list-none space-y-3">
+          <li v-for="(task, i) in job.tasks" :key="i" class="flex">
+            <span class="text-[#80756e] mr-3 mt-1 text-xs">◆</span>
+            <span>{{ task }}</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="flex flex-wrap gap-2">
         <span
             v-for="(tech, index) in job.technologies"
             :key="index"
-            class="bg-teal-700 text-white text-xs px-2 py-1 rounded-full"
+            class="bg-[#f4f4f3] text-[#4e453f] border border-[#d1c4bc] text-[10px] px-2 py-1 font-['Space_Grotesk',monospace] uppercase tracking-widest cursor-default hover:border-[#80756e] transition-colors"
         >
           {{ tech }}
         </span>
