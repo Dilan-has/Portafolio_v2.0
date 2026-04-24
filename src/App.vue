@@ -1,23 +1,24 @@
 <template>
-  <div id="app" class="min-h-screen bg-gray-900 text-white font-sans antialiased flex">
+  <div id="app" class="min-h-screen bg-[#f9f9f8] text-[#1a1c1c] font-sans antialiased flex">
     <NavBar :menuOpen="menuOpen" @close-menu="closeMenu" />
 
     <button @click="toggleMenu"
-            class="fixed top-4 left-4 text-white z-50 md:hidden focus:outline-none bg-gray-800 p-2 rounded-md shadow-lg">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            class="fixed top-4 left-4 text-[#f9f9f8] z-50 md:hidden focus:outline-none bg-[#1a1c1c] border border-[#1a1c1c] p-2 shadow-md">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
 
-    <div class="flex-1 flex flex-col"> <div class="flex-1 overflow-y-auto pt-20 md:pt-4 md:pl-20">
-      <div class="max-w-none xl:max-w-6xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-        <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
-            <component :is="Component" />
-          </transition>
-        </router-view>
+    <div class="flex-1 flex flex-col min-w-0">
+      <div class="flex-1 overflow-y-auto pt-16 md:pt-0 md:pl-20">
+        <div class="w-full h-full">
+          <router-view v-slot="{ Component }">
+            <transition name="fade" mode="out-in">
+              <component :is="Component" />
+            </transition>
+          </router-view>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </template>

@@ -1,26 +1,29 @@
 <template>
   <div v-if="menuOpen"
        @click="closeMenu"
-       class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"></div>
+       class="fixed inset-0 bg-[#1a1c1c] bg-opacity-30 backdrop-blur-sm z-30 md:hidden"></div>
 
-  <nav :class="{ 'translate-x-0': menuOpen }"
-       class="fixed top-0 left-0 h-screen bg-gray-900 text-white flex flex-col py-4 shadow-lg z-40
-              w-20 hover:w-64 transition-all duration-300 ease-in-out group
-              md:translate-x-0 md:relative md:flex md:w-20 md:hover:w-64">
-    <div class="mb-8 flex justify-center">
-      <img src="../assets/avatar.jpg" alt="Avatar" class="w-12 h-12 rounded-full border-2 border-purple-500">
+  <nav :class="menuOpen ? 'translate-x-0' : '-translate-x-full'"
+       class="fixed top-0 left-0 h-screen bg-[#f4f4f3] text-[#5f5e5e] flex flex-col py-6 border-r border-[#d1c4bc] z-40
+              w-64 md:w-20 md:hover:w-64 transition-all duration-300 ease-in-out group
+              md:translate-x-0 md:flex font-['Space_Grotesk',monospace] overflow-hidden">
+    <div class="mb-12 flex flex-col items-center shrink-0">
+      <div class="w-10 h-10 bg-[#34271e] flex items-center justify-center border border-[#1a1c1c] md:group-hover:-translate-y-0.5 md:group-hover:-translate-x-0.5 transition-transform duration-300 shadow-[2px_2px_0px_#1a1c1c] md:group-hover:shadow-[4px_4px_0px_#1a1c1c]">
+        <span class="text-white font-bold text-lg tracking-widest ml-1">DP</span>
+      </div>
     </div>
 
-    <ul class="flex flex-col gap-6 w-full">
+    <ul class="flex flex-col gap-2 w-full mt-4">
       <li v-for="link in navLinks" :key="link.name">
         <router-link :to="link.path"
                      @click="closeMenu"
-                     class="flex items-center py-2 px-4 rounded-lg
-                            hover:bg-gray-700 transition-colors duration-200">
-          <font-awesome-icon :icon="link.icon" class="text-2xl mr-4" />
-          <span class="whitespace-nowrap opacity-0 group-hover:opacity-100
-                       translate-x-full group-hover:translate-x-0
-                       transition-all duration-300 ease-in-out delay-100">
+                     class="flex items-center py-4 px-0 hover:bg-[#e4e2e1] hover:text-[#1a1c1c] transition-colors duration-200 border-r-4 border-transparent">
+          <div class="w-20 flex justify-center items-center shrink-0">
+            <font-awesome-icon :icon="link.icon" class="text-lg" />
+          </div>
+          <span class="whitespace-nowrap opacity-100 md:opacity-0 md:group-hover:opacity-100
+                       translate-x-0 md:translate-x-4 md:group-hover:translate-x-0
+                       transition-all duration-300 ease-in-out text-sm uppercase tracking-widest">
             {{ link.name }}
           </span>
         </router-link>
@@ -29,7 +32,7 @@
 
     <button v-if="menuOpen"
             @click="closeMenu"
-            class="absolute top-4 right-4 text-white md:hidden focus:outline-none">
+            class="absolute top-4 right-4 text-[#1a1c1c] md:hidden focus:outline-none">
       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
       </svg>
@@ -39,32 +42,29 @@
 
 <script setup>
 import {ref, watch} from 'vue';
-import { useRoute } from 'vue-router'; // Importa useRoute para observar cambios de ruta
+import { useRoute } from 'vue-router';
 
-// Prop para controlar la visibilidad del menú desde App.vue
 const props = defineProps({
   menuOpen: Boolean
 });
 
-// Emitir evento para cerrar el menú desde App.vue
 const emit = defineEmits(['close-menu']);
 
 const navLinks = ref([
-  { name: 'Inicio', path: '/', icon: ['fas', 'home'] },
-  { name: 'Proyectos', path: '/projects', icon: ['fas', 'project-diagram'] },
-  { name: 'Experiencia', path: '/experience', icon: ['fas', 'briefcase'] },
-  { name: 'Stack', path: '/stack', icon: ['fas', 'code'] },
-  { name: 'Contacto', path: '/contact', icon: ['fas', 'envelope'] },
+  { name: 'Terminal', path: '/', icon: ['fas', 'terminal'] },
+  { name: 'Projects', path: '/projects', icon: ['fas', 'folder-tree'] },
+  { name: 'Experience', path: '/experience', icon: ['fas', 'code-commit'] },
+  { name: 'Stack', path: '/stack', icon: ['fas', 'server'] },
+  { name: 'Contact', path: '/contact', icon: ['fas', 'at'] },
 ]);
 
 const closeMenu = () => {
-  emit('close-menu'); // Emite un evento para que App.vue cierre el menú
+  emit('close-menu');
 };
 
-// Opcional: Cerrar el menú si la ruta cambia (si el usuario navega sin cerrar explícitamente)
 const route = useRoute();
 watch(route, () => {
-  if (props.menuOpen) { // Solo cierra si el menú está abierto
+  if (props.menuOpen) {
     closeMenu();
   }
 });
@@ -72,14 +72,6 @@ watch(route, () => {
 
 <style scoped>
 .router-link-exact-active {
-  @apply bg-purple-600 text-white;
+  @apply bg-[#e4e2e1] text-[#1a1c1c] border-[#34271e];
 }
-
-/* Transición para el deslizamiento del menú móvil */
-nav {
-  transform: translateX(-100%); /* Oculta el menú por defecto en móviles */
-}
-
-/* Clases específicas de Tailwind aplicadas directamente en el template para la responsividad */
-/* md:translate-x-0 y md:relative aseguran que en desktop siempre esté visible y no fijo */
 </style>

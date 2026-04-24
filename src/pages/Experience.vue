@@ -1,16 +1,35 @@
 <template>
-  <section class="py-8 px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold text-white mb-8 text-center">Mi Trayectoria Profesional</h2>
+  <div class="min-h-screen bg-[#f9f9f8] text-[#1a1c1c] px-6 md:px-12 py-24 selection:bg-[#34271e] selection:text-white font-['Inter',sans-serif]">
+    <section class="max-w-[800px] mx-auto mt-4 md:mt-12">
+      <div class="mb-16">
+        <div class="mb-4 inline-block border border-[#d1c4bc] px-3 py-1 text-[#5f5e5e] font-['Space_Grotesk',monospace] text-xs uppercase tracking-widest bg-[#f4f4f3]">
+          Commit History
+        </div>
+        <h2 class="text-4xl md:text-6xl font-bold text-[#1a1c1c] font-['Manrope',sans-serif] tracking-tighter">
+          Professional Experience
+        </h2>
+      </div>
 
-    <div class="max-w-3xl mx-auto">
-      <ExperienceItem
-          v-for="(job, index) in experiences"
-          :key="index"
-          :job="job"
-          :style="{ 'animation-delay': `${index * 0.15}s` }"
-      />
-    </div>
-  </section>
+      <div class="relative ml-2 md:ml-4 border-l border-[#4b3d33] pt-12 pb-8">
+        <!-- Gradient fade to make the line disappear at the top -->
+        <div class="absolute top-0 left-[-1px] w-[3px] h-24 bg-gradient-to-b from-[#f9f9f8] to-transparent z-0"></div>
+
+        <!-- "To be continued..." node -->
+        <div class="relative pl-8 md:pl-12 mb-16 z-10">
+          <div class="absolute -left-[6px] top-1.5 w-3 h-3 bg-[#f9f9f8] border-2 border-[#d1c4bc] animate-pulse"></div>
+          <div class="flex items-center text-[#80756e] font-['Space_Grotesk',monospace] uppercase tracking-widest text-xs">
+            <span class="opacity-70 font-bold bg-[#f9f9f8] px-1 -ml-1">Compiling next stage...</span>
+          </div>
+        </div>
+
+        <ExperienceItem
+            v-for="(job, index) in experiences"
+            :key="index"
+            :job="job"
+        />
+      </div>
+    </section>
+  </div>
 </template>
 
 <script setup>
@@ -19,30 +38,27 @@ import ExperienceItem from '@/components/ExperienceItem.vue';
 
 const experiences = ref([
   {
-    title: 'Desarrollador Backend',
+    title: 'Backend Developer',
     company: 'Mercado Libre.',
-    period: 'Enero 2023 – Actualidad',
+    period: 'January 2023 – Present',
     tasks: [
-      'Liderar el desarrollo de microservicios utilizando Golang y Java.',
-      'Participar en revisiones de código.',
-      'Realizar documentacion de APIs aplicando casos de uso, diagramos de flujo etc..',
-      'Desarrollar soluciones para mejorar la eficiencia de los microservicios.',
+      'Lead the development of microservices using Golang and Java.',
+      'Participate in code reviews and technical discussions.',
+      'Document APIs using use cases, flowcharts, and architectural diagrams.',
+      'Develop solutions to improve microservice efficiency and scalability.',
     ],
     technologies: ['Node.js', 'Golang', 'Java', 'SQL', 'Docker']
   },
   {
-    title: 'Desarrollador Full-Stack',
+    title: 'Full-Stack Developer',
     company: 'Grupo proteger SAS.',
-    period: 'Septiembre 2021 – Septiembre 2022',
+    period: 'September 2021 – September 2022',
     tasks: [
-      'Desarrollar y mantener componentes de interfaz de usuario para aplicaciones web.',
-      'Optimizar el rendimiento de las aplicaciones web para una mejor experiencia de usuario.',
-      'Realizar consultas complejas a las bases de datos utilizando SQL'
+      'Develop and maintain UI components for web applications.',
+      'Optimize web application performance for better user experience.',
+      'Perform complex database queries and optimization using SQL.'
     ],
     technologies: ['SQL', 'JavaScript', 'HTML', 'CSS', 'Sass', 'Webpack']
   },
 ]);
 </script>
-
-<style scoped>
-</style>
